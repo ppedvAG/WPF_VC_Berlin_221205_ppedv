@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M02_Controls", "Controls\M0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Personendatenbank", "Personendatenbank\Personendatenbank.csproj", "{FBCBF191-48CC-4D83-94C3-7B142092F25A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Container", "Container\Container.csproj", "{EADC93BB-A132-4B26-BA88-A3153259967E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M03_Container", "Container\M03_Container.csproj", "{EADC93BB-A132-4B26-BA88-A3153259967E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventRouting", "EventRouting\EventRouting.csproj", "{9AFF49B1-889B-49C2-9744-F9A94C05C4F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{EADC93BB-A132-4B26-BA88-A3153259967E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EADC93BB-A132-4B26-BA88-A3153259967E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EADC93BB-A132-4B26-BA88-A3153259967E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AFF49B1-889B-49C2-9744-F9A94C05C4F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AFF49B1-889B-49C2-9744-F9A94C05C4F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AFF49B1-889B-49C2-9744-F9A94C05C4F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AFF49B1-889B-49C2-9744-F9A94C05C4F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
