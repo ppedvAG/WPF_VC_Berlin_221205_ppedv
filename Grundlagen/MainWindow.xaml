@@ -1,0 +1,40 @@
+﻿<Window x:Class="Grundlagen.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"       
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Grundlagen"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="292" Width="375">
+ <!--Kommentar-->
+    
+    <StackPanel>
+
+        <Button x:Name="Btn_Beispiel"
+                Content="Klick Mich"
+                Background="LightGreen"
+                Margin="20"
+                Width="120"
+                HorizontalAlignment="Left" 
+                FontSize="16"
+                Click="Btn_Beispiel_Click"/>
+
+        <Button>
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
+                    <GradientStop Color="LightBlue" Offset="0"/>
+                    <GradientStop Color="DarkBlue" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Content>
+                <TextBox Width="80"/>
+            </Button.Content>
+        </Button>
+
+        <Button>
+            Hallo
+        </Button>
+        
+    </StackPanel>
+
+</Window>
