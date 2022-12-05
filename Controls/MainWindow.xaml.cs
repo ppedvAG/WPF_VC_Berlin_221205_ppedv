@@ -23,45 +23,80 @@ namespace Controls
         public MainWindow()
         {
             InitializeComponent();
+
+            //Zuweisung eines weiteren EventHandlers zu dem Click-Event des Buttons
+            Btn_KlickMich.Click += Btn_KlickMich_Click_2;
         }
 
+        //Event-Handler für das Click-Event des Buttons
         private void Btn_KlickMich_Click(object sender, RoutedEventArgs e)
         {
-            if (Cbb_Auswahl.SelectedItem != null)
-                Lbl_Output.Content = (Cbb_Auswahl.SelectedItem as ComboBoxItem).Content;
+            //Neuzuweisung der Content-Eigenschaft des Labels mit dem ausgewählten Inhalt der ComboBox
+            Lbl_Output.Content = (Cbb_Auswahl.SelectedItem as ComboBoxItem)?.Content;
 
-            Tbx_Input.Text = Sdr_Wert.Value.ToString();
+            //Änderung der Hintergrundfarbe des Fensters
+            Wnd_Main.Background = new SolidColorBrush(Colors.Blue);
+
+            //MessageBox mit dem Inhalt der TextBox
+            MessageBox.Show(Tbx_Input.Text);
+
+            //Prüfung, ob die Checkbox abgehakt ist
+            if (Cbx_Haken.IsChecked == true)
+                //Anzeige einer MessageBox mit Inhalt der TextBox und Auswahl der ComboBox
+                MessageBox.Show(Tbx_Input.Text + "\n" + Cbb_Auswahl.Text);
         }
 
-        private void Schließen_Click(object sender, RoutedEventArgs e)
+        //Zweiter Eventhandeler des Buttons (siehe Konstruktor)
+        private void Btn_KlickMich_Click_2(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show("Möchtest du das Fenster wirklich schließen?", "Beenden", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            //MessageBox-Abfrage mit Überprüfung des geklickten Buttons
+            switch (MessageBox.Show("JA oder NEIN?", "Meine Frage an dich", MessageBoxButton.YesNoCancel, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.RightAlign))
+            {
+                case MessageBoxResult.Yes:
+                    MessageBox.Show("YES");
+                    break;
+                case MessageBoxResult.No:
+                    MessageBox.Show("No");
+                    break;
+            }
+        }
+
+        private void OpenWindow(object sender, RoutedEventArgs e)
+        {
+            //Öffen eines neuen Fensters als gleichberechtigtes Fenster
+            new MainWindow() { Title = "Neues Fenster" }.Show();
+        }
+
+        private void OpenDialogWindow(object sender, RoutedEventArgs e)
+        {
+
+            //Öffnen eines neuen Fensters als Dialogfenster mit Rückgabe des DialogResults
+            bool? dialogresult = new MainWindow() { Title = "Neues Dialogfenster" }.ShowDialog();
+            MessageBox.Show(dialogresult.ToString());
+        }
+
+        private void CloseWindow(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show
+                (
+                    "Soll das Fenster wirklich geschlossen werden?",
+                    "Programm beenden",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question
+                ) == MessageBoxResult.Yes)
+
+                //Schließen des Fensters
                 this.Close();
+
+            //Beenden der Applikation
+            //Application.Current.Shutdown();
         }
-
-        private void Neu_Click(object sender, RoutedEventArgs e)
+        private void Btn_ok_Click(object sender, RoutedEventArgs e)
         {
-            Window newWindow =  new MainWindow();
-
-            newWindow.Title = "Neues Fenster";
-
-            newWindow.Show();
-        }
-
-        private void Dialog_Click(object sender, RoutedEventArgs e)
-        {
-            Window newWindow = new MainWindow();
-
-            newWindow.Title = "Neues Dialog-Fenster";
-
-            if (newWindow.ShowDialog() == true)
-                Lbl_Output.Content = "OKAY";
-        }
-
-        private void OK_Click(object sender, RoutedEventArgs e)
-        {
+            //Setzen des Diaologresults (Rückgabe von ShowDialog())
             this.DialogResult = true; 
             this.Close();
         }
     }
 }
+
