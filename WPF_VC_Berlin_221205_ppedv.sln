@@ -13,7 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M03_Container", "Container\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M04_EventRouting", "EventRouting\M04_EventRouting.csproj", "{9AFF49B1-889B-49C2-9744-F9A94C05C4F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bindings", "Bindings\Bindings.csproj", "{59238D8A-5C6A-4F6B-B93F-4C8357C3B1C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M05_PropertyBinding", "Bindings\M05_PropertyBinding.csproj", "{59238D8A-5C6A-4F6B-B93F-4C8357C3B1C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorPicker", "ColorPicker\ColorPicker.csproj", "{3545014E-E401-4B95-8168-4CE4CC3E51AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBinding", "DataBinding\DataBinding.csproj", "{F2029F2C-01EF-4EDD-BF85-80FC47B5CC94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{59238D8A-5C6A-4F6B-B93F-4C8357C3B1C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59238D8A-5C6A-4F6B-B93F-4C8357C3B1C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59238D8A-5C6A-4F6B-B93F-4C8357C3B1C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3545014E-E401-4B95-8168-4CE4CC3E51AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3545014E-E401-4B95-8168-4CE4CC3E51AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3545014E-E401-4B95-8168-4CE4CC3E51AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3545014E-E401-4B95-8168-4CE4CC3E51AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2029F2C-01EF-4EDD-BF85-80FC47B5CC94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2029F2C-01EF-4EDD-BF85-80FC47B5CC94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2029F2C-01EF-4EDD-BF85-80FC47B5CC94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2029F2C-01EF-4EDD-BF85-80FC47B5CC94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
