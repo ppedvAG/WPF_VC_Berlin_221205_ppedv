@@ -105,8 +105,8 @@
                     <MenuItem Header="_Neu" Click="OpenWindow"/>
                     <MenuItem Header="_Dialog" Click="OpenDialogWindow"/>
                 </MenuItem>
-                <MenuItem Header="_Speichern"/>
-                <MenuItem Header="S_chließen" Click="CloseWindow"/>
+                <MenuItem Header="_Speichern" />
+                <MenuItem Header="S_chließen" Click="CloseWindow" InputGestureText="Strg+S"/>
             </MenuItem>
             <MenuItem Header="_Hilfe"/>
         </Menu>

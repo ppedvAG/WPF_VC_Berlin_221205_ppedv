@@ -34,5 +34,20 @@ namespace EventRouting
         {
             Tbl_Output.Text += $"{(sender as FrameworkElement).Name}: ButtonBase.Click\n";
         }
+
+        private void SP_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if ((sender as FrameworkElement).Name == "Aqua")
+                Tbl_Output.Text += $"Origin: {(e.OriginalSource as FrameworkElement).Name}\n";
+            Tbl_Output.Text += $"{(sender as FrameworkElement).Name}: Tunneling/Preview\n";
+        }
+
+        private void SP_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Tbl_Output.Text += $"{(sender as FrameworkElement).Name}: Bubbeling\n";
+
+            if ((sender as FrameworkElement).Name == "Grün")
+                e.Handled = true;
+        }
     }
 }

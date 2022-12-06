@@ -1,4 +1,6 @@
-﻿<Window x:Class="EventRouting.MainWindow"
+﻿<!--Basisklassen-Events (z.B. ButtonBase.Click) triggern bei Auslösung jedes gleichartigen Events innerhalb
+    des Elements-->
+<Window x:Class="EventRouting.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,10 +10,23 @@
         Title="MainWindow" Height="326" Width="485"
         ButtonBase.Click="Window_Click"
         x:Name="Wnd_Main">
-    <StackPanel>
+    
+    <StackPanel x:Name="Aqua" Background="Aqua"
+                PreviewMouseDown="SP_PreviewMouseDown"
+                MouseDown="SP_MouseDown">
+        <StackPanel x:Name="Grün" Background="Green" Margin="20"
+                PreviewMouseDown="SP_PreviewMouseDown"
+                MouseDown="SP_MouseDown">
+            <StackPanel x:Name="Gelb" Background="Yellow" Margin="20" Height="50"
+                PreviewMouseDown="SP_PreviewMouseDown"
+                MouseDown="SP_MouseDown">
+                
+                <Button x:Name="Btn_KlickMich" Content="Klick Mich" Click="Button_Click"/>
+            
+            </StackPanel>
+        </StackPanel>
 
-        <Button x:Name="Btn_KlickMich" Content="Klick Mich" Click="Button_Click"/>
 
-        <TextBlock x:Name="Tbl_Output" Height="200"/>
+        <TextBlock x:Name="Tbl_Output" Height="200" Background="White"/>
     </StackPanel>
 </Window>
