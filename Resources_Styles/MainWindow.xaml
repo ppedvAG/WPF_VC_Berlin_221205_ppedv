@@ -6,33 +6,43 @@
         xmlns:local="clr-namespace:Resources_Styles"
         xmlns:sys="clr-namespace:System;assembly=System.Runtime"
         mc:Ignorable="d"
-        Title="MainWindow" Height="294" Width="374">
+        Title="MainWindow" Height="259" Width="299">
+
+    <!--Über die Ressourcen von App/Window/Container können für die entsprechende Range Daten
+        zur Verfügung gestellt werden. Die Verbindung von Properties zu diesen Resourcen wird dann
+        über eine StaticResource-Bindung hergestellt. Alternativ kann eine DynamicRessource-Bindung 
+        erstellt werden, wodurch die gebundene Property auf Veränderungen an der Ressource durch 
+        den CodeBehind reagiert.-->
     <Window.Resources>
         <sys:Double x:Key="globalFontSize">25.0</sys:Double>
     </Window.Resources>
-    
+
     <StackPanel x:Name="Spl_Main">
         <StackPanel.Resources>
             <SolidColorBrush Color="LightGreen" x:Key="Scb_LightGreen"/>
         </StackPanel.Resources>
 
-        <Button Content="{StaticResource KeyAusDict}"
+        <!--Eine Anbindung an Ressourcen erfolgt entweder über eine StaticResource-Bindung, welche den Wert einmalig einholt-->
+        <!--oder über eine DynamicResource-Bindung, welche permanent nach Veränderungen sucht und diese übernimmt-->
+        <Button Content="{StaticResource StringAusDict}" 
                 Background="{StaticResource Scb_LightGreen}"
                 FontSize="{StaticResource globalFontSize}"
                 Click="Button_Click"/>
-
-        <Button Content="{x:Static local:Resource1.meinButtonString}"
+        <!--Die x:Static-Bindung ist ebenfalls eine statische Ressourcen-Bindung, welche mächtiger ist, als die 'normale'.
+        Sie kann zum Beispiel (wie hier) für Bindungen an eine resX-Datei (in den Projekt-Properties) benutzt werden.-->
+        <Button Content="{x:Static local:Resource1.meinButtonString}" 
                 Background="{DynamicResource Scb_LightGreen}"/>
 
-        
-        
-
+        <!--Styles-->
         <StackPanel x:Name="Spl_Styles" Margin="20">
-
             <StackPanel.Resources>
+                <!--Mit Styles konnen Sammlungen Propertes einzelner Controls und Container
+                    gebündelt vordefiniert werden. Erhält ein Style einen Key, erhalten alle derartigen
+                    Elemente, welche den Style in ihrer Style-Property angeben, diesen Style. Wenn ein Style
+                    keinen Key hat, wird er zum Standartlayout derartiger Elemente in der gewählten
+                    Range. Lokale Property-Werte haben Vorang vor den Styles.-->
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="Yellow"/>
-                    <Setter Property="FontFamily" Value="Comic Sans MS"/>
                     <Setter Property="FontSize" Value="{StaticResource globalFontSize}"/>
                 </Style>
 
@@ -40,23 +50,23 @@
                     <Setter Property="Background" Value="Green"/>
                     <Setter Property="FontWeight" Value="Bold"/>
                 </Style>
-
+                <!--Mittels der BaseOn-Property kann ein Style alles Propeties eines anderen Styles erben.-->
                 <Style TargetType="Button" x:Key="Sty_Btn_02" BasedOn="{StaticResource Sty_Btn_01}">
-                    <Setter Property="FontSize" Value="35"/>
+                    <Setter Property="FontFamily" Value="Comic Sans MS"/>
                 </Style>
-                
+                <!--Erben von globalen Styles ist möglich durch Angabe des Basisstyle-TargetTypes-->
                 <Style TargetType="Button" x:Key="Sty_Btn_03" BasedOn="{StaticResource {x:Type Button}}">
-                    <Setter Property="FontSize" Value="35"/>
+                    <Setter Property="FontFamily" Value="Comic Sans MS"/>
                 </Style>
             </StackPanel.Resources>
 
-            <Button Content="Button1" FontSize="20"/>
-            <Button Content="Button2" Style="{StaticResource Sty_Btn_01}"/>
-            <Button Content="Button3" Style="{StaticResource Sty_Btn_03}"/>
+            <Button Content="Btn1" Background="HotPink"/>
+            <Button Content="Btn2" Style="{StaticResource Sty_Btn_01}"/>
+            <Button Content="Btn3" Style="{StaticResource Sty_Btn_02}"/>
+            <Button Content="Btn4" Style="{StaticResource Sty_Btn_03}"/>
         </StackPanel>
 
-        <Button Content="Luna"/>
-
+        <!--Dieser Button übernimmt den globalen Style des in der App.xaml angemeldeten Luna-Themes-->
+        <Button Content="Luna-Theme Button"/>
     </StackPanel>
-    
 </Window>
