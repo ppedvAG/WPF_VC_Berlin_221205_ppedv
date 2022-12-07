@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,11 +24,24 @@ namespace Templates
         public MainWindow()
         {
             InitializeComponent();
+
+            this.DataContext= this;
         }
+
+        public ObservableCollection<PKW> PKWListe{ get; set; } = new ObservableCollection<PKW>()
+        {
+            new PKW() {Hersteller="Audi", Model="Auto", Preis=23000}, 
+            new PKW() {Hersteller="VW", Model="Auto1", Preis=25000}, 
+        };
 
         private void Btn_ControlTemplate_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Button funktioniert");
+        }
+
+        private void Btn_Löschen_Click(object sender, RoutedEventArgs e)
+        {
+            PKWListe.Remove((sender as Button).Tag as PKW);
         }
     }
 }

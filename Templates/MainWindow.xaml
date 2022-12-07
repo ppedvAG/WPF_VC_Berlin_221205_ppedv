@@ -6,7 +6,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Templates"
         mc:Ignorable="d"
-        Title="MainWindow" Height="379" Width="267" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="379" Width="267" WindowStartupLocation="CenterScreen"
+        Topmost="True">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Template">
@@ -43,6 +44,14 @@
 
         </Style>
 
+        <DataTemplate DataType="{x:Type local:PKW}">
+            <StackPanel Orientation="Horizontal">
+                <TextBox Text="{Binding Hersteller}" Margin="1"/>
+                <TextBlock Text=":" Margin="1"/>
+                <TextBlock Text="{Binding Model}" Margin="1"/>
+                <TextBlock Text="{Binding Preis, StringFormat='({0} €)'}" Margin="1"/>
+              </StackPanel>
+        </DataTemplate>
     </Window.Resources>
 
     <StackPanel>
@@ -50,5 +59,24 @@
         <Button Content="Klick mich!!" Height="100" Width="100" 
                 x:Name="Btn_ControlTemplate" Click="Btn_ControlTemplate_Click"
                 Background="Aqua"/>
+
+        <ListBox ItemsSource="{Binding PKWListe}" Height="100" x:Name="Lbx_PKW"
+                 SelectedValuePath="Preis">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type local:PKW}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Text="{Binding Hersteller}" Margin="1"/>
+                        <TextBlock Text=":" Margin="1"/>
+                        <TextBlock Text="{Binding Model}" Margin="1"/>
+                        <TextBlock Text="{Binding Preis, StringFormat='({0} €)'}" Margin="1"/>
+                        <Button Content="Löschen" x:Name="Btn_Löschen" Click="Btn_Löschen_Click" Tag="{Binding}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Label Content="{Binding ElementName=Lbx_PKW, Path=SelectedItem}"/>
+        <Label Content="{Binding ElementName=Lbx_PKW, Path=SelectedIndex}"/>
+        <Label Content="{Binding ElementName=Lbx_PKW, Path=SelectedValue}"/>
     </StackPanel>
 </Window>
