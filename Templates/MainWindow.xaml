@@ -6,8 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Templates"
         mc:Ignorable="d"
-        Title="MainWindow" Height="379" Width="267" WindowStartupLocation="CenterScreen"
-        Topmost="True">
+        Title="MainWindow" Height="467" Width="544.972" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Template">
@@ -44,13 +43,18 @@
 
         </Style>
 
+        <!--Globales DataTemplate für Personen-Objekte-->
         <DataTemplate DataType="{x:Type local:PKW}">
             <StackPanel Orientation="Horizontal">
-                <TextBox Text="{Binding Hersteller}" Margin="1"/>
-                <TextBlock Text=":" Margin="1"/>
-                <TextBlock Text="{Binding Model}" Margin="1"/>
-                <TextBlock Text="{Binding Preis, StringFormat='({0} €)'}" Margin="1"/>
-              </StackPanel>
+                <TextBlock Text="{Binding Hersteller}"/>
+                <TextBlock Text=": "/>
+                <TextBlock Text="{Binding Model}"/>
+                <TextBlock Text=" "/>
+                <TextBox Text="{Binding Preis}" Width="30"/>
+                <Button Content="Löschen"
+                        Click="Btn_Löschen_Click"
+                        Tag="{Binding}"/>
+            </StackPanel>
         </DataTemplate>
     </Window.Resources>
 
@@ -60,23 +64,35 @@
                 x:Name="Btn_ControlTemplate" Click="Btn_ControlTemplate_Click"
                 Background="Aqua"/>
 
-        <ListBox ItemsSource="{Binding PKWListe}" Height="100" x:Name="Lbx_PKW"
-                 SelectedValuePath="Preis">
+        <!--DataTemplate-Bsp-->
+        <ListBox x:Name="Lbx_Personen" Height="100" ItemsSource="{Binding Personenliste}"
+                 SelectedValuePath="Vorname">
             <ListBox.ItemTemplate>
-                <DataTemplate DataType="{x:Type local:PKW}">
+                <!--DataTemplates sind Vorlagen für das Layout von Items in ItemControls (z.B. ListView). Die Bindungen erfolgt an die
+                    ItemSource des Zielelements per Kurzbindungen.
+                    Explizit definierte DataTemplates haben Vorrang für dem globalen DataTemplate-->
+                <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBox Text="{Binding Hersteller}" Margin="1"/>
-                        <TextBlock Text=":" Margin="1"/>
-                        <TextBlock Text="{Binding Model}" Margin="1"/>
-                        <TextBlock Text="{Binding Preis, StringFormat='({0} €)'}" Margin="1"/>
-                        <Button Content="Löschen" x:Name="Btn_Löschen" Click="Btn_Löschen_Click" Tag="{Binding}"/>
+                        <TextBlock Text="{Binding Hersteller}"/>
+                        <TextBlock Text=": "/>
+                        <TextBlock Text="{Binding Model}"/>
+                        <TextBlock Text="{Binding Preis, StringFormat= ({0}€)}"/>
+                        <!--Property 'Tag' kann für jedes beliebige Objekt benutzt werden, z.B. für Zusatzinformation, Metadaten, Referenzen -->
+                        <!--Kurzbindung 'Binding' ohne Propertyangabe bindet immer an das ganze Objekt (hier: die ganze Person)-->
+                        <Button x:Name="Btn_Loeschen_02" Margin="2"
+                                Content="Löschen" Click="Btn_Löschen_Click" Tag="{Binding}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+       
+        <Separator/>
 
-        <Label Content="{Binding ElementName=Lbx_PKW, Path=SelectedItem}"/>
-        <Label Content="{Binding ElementName=Lbx_PKW, Path=SelectedIndex}"/>
-        <Label Content="{Binding ElementName=Lbx_PKW, Path=SelectedValue}"/>
+        <!--SelectedIndex gibt die Indexposition des markierten Elements zurück-->
+        <TextBlock Text="{Binding SelectedIndex, ElementName=Lbx_Personen, StringFormat=SelectedIndex: {0:00.00}}"/>
+        <!--SelectedItem gib das Objekt hinter dem markierten Element zurück (Hier unter Verwendung des globalen DataTemplates)-->
+        <Label Content="{Binding ElementName=Lbx_Personen, Path=SelectedItem}"/>
+        <!--SelectedValue gibt die in der Property SelectedValuePath im ItemControl angegebene Property zurück-->
+        <TextBlock Text="{Binding ElementName=Lbx_Personen, Path=SelectedValue, StringFormat=SelectedValue: {0}}"/>
     </StackPanel>
 </Window>

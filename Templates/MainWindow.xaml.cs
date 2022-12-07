@@ -25,6 +25,7 @@ namespace Templates
         {
             InitializeComponent();
 
+            //Vorbereitung
             this.DataContext= this;
         }
 
@@ -41,6 +42,7 @@ namespace Templates
 
         private void Btn_Löschen_Click(object sender, RoutedEventArgs e)
         {
+            //Löschen des PKWs, welcher in dem Button-Tag liegt
             PKWListe.Remove((sender as Button).Tag as PKW);
         }
     }
