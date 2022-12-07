@@ -65,8 +65,8 @@
                 Background="Aqua"/>
 
         <!--DataTemplate-Bsp-->
-        <ListBox x:Name="Lbx_Personen" Height="100" ItemsSource="{Binding Personenliste}"
-                 SelectedValuePath="Vorname">
+        <ListBox x:Name="Lbx_Personen" Height="100" ItemsSource="{Binding PKWListe}"
+                 SelectedValuePath="Model">
             <ListBox.ItemTemplate>
                 <!--DataTemplates sind Vorlagen für das Layout von Items in ItemControls (z.B. ListView). Die Bindungen erfolgt an die
                     ItemSource des Zielelements per Kurzbindungen.
