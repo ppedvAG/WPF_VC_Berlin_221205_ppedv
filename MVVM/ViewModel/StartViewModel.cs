@@ -25,6 +25,7 @@ namespace MVVM.ViewModel
         public StartViewModel()
         {
             //Befüllung der Commands
+            //Befüllung der Commands
             LadeDbCmd = new CustomCommand
                 (
                     //Exe: führe Methode aus Model aus und informiere die GUI über Veränderung in der 'AnzahlPersonen'-Property
@@ -44,15 +45,18 @@ namespace MVVM.ViewModel
                     //Exe:
                     p =>
                     {
-                        //Öffnen des nächsten Views und Zuweisung des ViewModels erfolgt in Lab_14
-
+                        //Instanzierung eines neunen ListViews
+                        View.ListView db_Ansicht = new View.ListView();
+                        //Anzeigen des neuen ListViews
+                        db_Ansicht.Show();
                         //Schließen dieses Fensters (welches über den CommandParameter übergeben wurde)
                         (p as Window).Close();
                     },
                     //CanExe: Cmd kann ausgeführt werden, wenn die Anzahl der geladenen Personen > 0 ist
                     p => AnzahlPersonen > 0
-               );
+                    );
         }
+    
 
         //Event, welches die GUI über Veränderungen informiert
         public event PropertyChangedEventHandler? PropertyChanged;
